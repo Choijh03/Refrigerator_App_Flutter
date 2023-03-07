@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class FourthPage extends StatelessWidget {
@@ -7,7 +6,12 @@ class FourthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('Recipe Page')),
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Center(child: Text('Recipe List')),
+        backgroundColor: Colors.grey,
+        elevation: 0, //removing shadow
+      ),
     );
   }
 }

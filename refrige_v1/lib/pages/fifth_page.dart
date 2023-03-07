@@ -6,7 +6,12 @@ class FifthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('Roullete Page')),
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Center(child: Text('Food Recommendation Roullete')),
+        backgroundColor: Colors.grey,
+        elevation: 0, //removing shadow
+      ),
     );
   }
 }

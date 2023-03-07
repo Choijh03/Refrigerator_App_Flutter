@@ -6,7 +6,12 @@ class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('Refrigerator Page')),
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Center(child: Text('Refrigerator List')),
+        backgroundColor: Colors.grey,
+        elevation: 0, //removing shadow
+      ),
     );
   }
 }
