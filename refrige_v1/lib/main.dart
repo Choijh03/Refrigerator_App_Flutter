@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import 'home_page.dart';
 
-void main() {
+void main() async {
+  //init the hive
+  await Hive.initFlutter();
+
+  //open a box
+  var dateSaver1 = await Hive.openBox('dateSaver1');
+  var dateSaver2 = await Hive.openBox('dateSaver2');
+
   runApp(const MyApp());
 }
 

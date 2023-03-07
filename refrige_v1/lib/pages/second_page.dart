@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:refrige_v1/dialogs/dialog_box_freezer.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import '../tiles/freezer_tile.dart';
+import 'package:intl/intl.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({super.key});
@@ -11,13 +12,34 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
+  //reference Hive DataSaver
+  final _dataSaver = Hive.box('dateSaver1');
+
+  String dateTemp = '2023-03-08';
+
+  //create datetime variable
+  DateTime _today = DateTime.now();
+  DateTime _dateTime = DateTime.now();
+  DateFormat formatter = DateFormat('yyyy-MM-dd');
+
+  //write data
+  void writeData(String text) {
+    _dataSaver.put("TEXT", text);
+  }
+
+  //reset data base with today's date
+  void ResetTextDataBase() {
+    _dataSaver.delete("TEXT");
+    writeData(formatter.format(_today).toString());
+  }
+
   //text controller
   final _controller = TextEditingController();
 
   //list of Freezer items
   List freezerList = [
-    ["sample1", 'date', false],
-    ["sample2", 'date', false],
+    ["sample1", 'yyyy-mm-dd', false],
+    ["sample2", 'yyyy-mm-dd', false],
   ];
 
   //checkbox was tapped
@@ -30,14 +52,25 @@ class _SecondPageState extends State<SecondPage> {
   //save new task
   void saveNewItem() {
     setState(() {
-      freezerList.add([_controller.text, '2023-03-08', false]);
+      dateTemp = _dataSaver.get("TEXT");
+      freezerList.add([_controller.text, dateTemp, false]);
       _controller.clear();
     });
+    ResetTextDataBase();
     Navigator.of(context, rootNavigator: true).pop();
+  }
+
+  void close() {
+    _controller.clear();
+    Navigator.of(context, rootNavigator: true).pop();
+    ResetTextDataBase();
   }
 
   //create new Freezer item
   void createNewFreezerItem() {
+    if (_dataSaver.get("TEXT") == null) {
+      writeData(formatter.format(_today).toString());
+    }
     showDialog(
       context: context,
       builder: (context) {
@@ -45,7 +78,7 @@ class _SecondPageState extends State<SecondPage> {
           controller2: _controller,
           onSave: saveNewItem,
           //dismiss
-          onCancel: () => Navigator.of(context).pop(),
+          onCancel: close,
         );
       },
     );
