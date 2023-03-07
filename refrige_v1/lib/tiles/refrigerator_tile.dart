@@ -47,9 +47,6 @@ class RefrigeratorTile extends StatelessWidget {
                 onChanged: onChanged_Refrigerator,
                 activeColor: Colors.black,
               ),
-              const SizedBox(
-                width: 30,
-              ),
               //item name
               Text(
                 refrigeratorName,
@@ -57,12 +54,20 @@ class RefrigeratorTile extends StatelessWidget {
                   decoration: refrigeratorCompleted
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
-                width: 50,
+                width: 10,
               ),
-              Text(date_refrigerator),
+              Text(
+                date_refrigerator,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
           decoration: BoxDecoration(

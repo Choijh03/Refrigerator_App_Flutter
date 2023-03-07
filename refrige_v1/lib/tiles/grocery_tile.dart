@@ -49,15 +49,15 @@ class GroceryTile extends StatelessWidget {
                 onChanged: onChanged_Grocery,
                 activeColor: Colors.black,
               ),
-              const SizedBox(
-                width: 30,
-              ),
+
               Text(
                 groceryName,
                 style: TextStyle(
                   decoration: groceryCompleted
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],

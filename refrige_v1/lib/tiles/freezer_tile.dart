@@ -47,9 +47,6 @@ class FreezerTile extends StatelessWidget {
                 onChanged: onChanged_Freezer,
                 activeColor: Colors.black,
               ),
-              const SizedBox(
-                width: 30,
-              ),
               //item name
               Text(
                 freezerName,
@@ -57,12 +54,20 @@ class FreezerTile extends StatelessWidget {
                   decoration: freezerCompleted
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
-                width: 50,
+                width: 10,
               ),
-              Text(date_freezer),
+              Text(
+                date_freezer,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
           decoration: BoxDecoration(
