@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import '../my_button.dart';
 
@@ -19,6 +20,14 @@ class DialogBoxRefrigerator extends StatefulWidget {
 }
 
 class _DialogBoxRefrigeratorState extends State<DialogBoxRefrigerator> {
+  //reference Hive DataSaver
+  final _dataSaver = Hive.box('dateSaver2');
+
+  //write data
+  void writeData(String text) {
+    _dataSaver.put("TEXT", text);
+  }
+
   //create datetime variable
   DateTime _dateTime = DateTime.now();
   DateFormat formatter = DateFormat('yyyy-MM-dd');
@@ -33,6 +42,7 @@ class _DialogBoxRefrigeratorState extends State<DialogBoxRefrigerator> {
     ).then((value) {
       setState(() {
         _dateTime = value!;
+        writeData(formatter.format(_dateTime).toString());
       });
     });
   }
