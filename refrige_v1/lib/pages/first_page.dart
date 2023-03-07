@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:refrige_v1/dialog_box_grocery.dart';
-import '../grocery_tile.dart';
+import 'package:refrige_v1/dialogs/dialog_box_grocery.dart';
+import '../tiles/grocery_tile.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-class GroceryTile extends StatelessWidget {
-  final String groceryName;
-  final bool groceryCompleted;
-  Function(bool?)? onChanged_Grocery;
+class RefrigeratorTile extends StatelessWidget {
+  final String refrigeratorName;
+  final String date_refrigerator;
+  final bool refrigeratorCompleted;
+  Function(bool?)? onChanged_Refrigerator;
   Function(BuildContext)? deleteFunction;
 
-  GroceryTile({
+  RefrigeratorTile({
     super.key,
-    required this.groceryName,
-    required this.groceryCompleted,
-    required this.onChanged_Grocery,
+    required this.refrigeratorName,
+    required this.date_refrigerator,
+    required this.refrigeratorCompleted,
+    required this.onChanged_Refrigerator,
     required this.deleteFunction,
   });
 
@@ -37,27 +39,35 @@ class GroceryTile extends StatelessWidget {
         ),
         child: Container(
           padding: EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Colors.grey[400],
-            borderRadius: BorderRadius.circular(12),
-          ),
           child: Row(
             children: [
-              //check box
+              //checkbox
               Checkbox(
-                value: groceryCompleted,
-                onChanged: onChanged_Grocery,
+                value: refrigeratorCompleted,
+                onChanged: onChanged_Refrigerator,
                 activeColor: Colors.black,
               ),
+              const SizedBox(
+                width: 30,
+              ),
+              //item name
               Text(
-                groceryName,
+                refrigeratorName,
                 style: TextStyle(
-                  decoration: groceryCompleted
+                  decoration: refrigeratorCompleted
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
                 ),
               ),
+              const SizedBox(
+                width: 50,
+              ),
+              Text(date_refrigerator),
             ],
+          ),
+          decoration: BoxDecoration(
+            color: Colors.grey[400],
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'my_button.dart';
+import '../my_button.dart';
 
 class DialogBoxGrocerry extends StatelessWidget {
   final controller;
@@ -33,7 +33,7 @@ class DialogBoxGrocerry extends StatelessWidget {
 
             //buttons -> save + canel
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 //save button
                 MyButton(text: 'Save', onPressed: onSave),
