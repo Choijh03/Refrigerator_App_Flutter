@@ -9,6 +9,9 @@ void main() async {
   //open a box
   var dateSaver1 = await Hive.openBox('dateSaver1');
   var dateSaver2 = await Hive.openBox('dateSaver2');
+  var groceryBox = await Hive.openBox('groceryBox');
+  var freezerBox = await Hive.openBox('freezerBox');
+  var refrigeratorBox = await Hive.openBox('refrigeratorBox');
 
   runApp(const MyApp());
 }

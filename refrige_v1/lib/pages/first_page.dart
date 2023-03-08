@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:refrige_v1/databases/grocery_database.dart';
 import 'package:refrige_v1/dialogs/dialog_box_grocery.dart';
 import '../tiles/grocery_tile.dart';
 
@@ -10,29 +12,41 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
+  //reference the hive box
+  final _myBox = Hive.box('groceryBox');
+  GroceryDataBase db = GroceryDataBase();
+
+  @override
+  void initState() {
+    //if this is the 1st time ever opening the ap, then create default data
+    if (_myBox.get("GROCERYLIST") == null) {
+      db.createInitialDataGrocery();
+    } else {
+      //there already exists data
+      db.loadDataGrocery();
+    }
+    super.initState();
+  }
+
   //text controller
   final _controller = TextEditingController();
-
-  //list of Grocery items
-  List groceryList = [
-    ["sample1", false],
-    ["sample2", false],
-  ];
 
   //checkbox was tapped
   void checkBoxChanged_grocery(bool? value, int index) {
     setState(() {
-      groceryList[index][1] = !groceryList[index][1];
+      db.groceryList[index][1] = !db.groceryList[index][1];
     });
+    db.updateDataBaseGrocery();
   }
 
   //save new task
   void saveNewItem() {
     setState(() {
-      groceryList.add([_controller.text, false]);
+      db.groceryList.add([_controller.text, false]);
       _controller.clear();
     });
     Navigator.of(context, rootNavigator: true).pop();
+    db.updateDataBaseGrocery();
   }
 
   //create new Grocery item
@@ -53,8 +67,9 @@ class _FirstPageState extends State<FirstPage> {
   //delete item
   void deleteItem(int index) {
     setState(() {
-      groceryList.removeAt(index);
+      db.groceryList.removeAt(index);
     });
+    db.updateDataBaseGrocery();
   }
 
   @override
@@ -74,11 +89,11 @@ class _FirstPageState extends State<FirstPage> {
         ),
       ),
       body: ListView.builder(
-        itemCount: groceryList.length,
+        itemCount: db.groceryList.length,
         itemBuilder: (context, index) {
           return GroceryTile(
-            groceryName: groceryList[index][0],
-            groceryCompleted: groceryList[index][1],
+            groceryName: db.groceryList[index][0],
+            groceryCompleted: db.groceryList[index][1],
             onChanged_Grocery: (value) => checkBoxChanged_grocery(value, index),
             deleteFunction: (context) => deleteItem(index),
           );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:refrige_v1/databases/refrigerator_database.dart';
 import 'package:refrige_v1/dialogs/dialog_box_refrigerator.dart';
 import 'package:intl/intl.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -14,6 +15,20 @@ class ThirdPage extends StatefulWidget {
 class _ThirdPageState extends State<ThirdPage> {
   //reference Hive DataSaver
   final _dataSaver = Hive.box('dateSaver2');
+  final _myBox = Hive.box('refrigeratorBox');
+  RefrigeratorDataBase db = RefrigeratorDataBase();
+
+  @override
+  void initState() {
+    //if this is the 1st time ever opening the ap, then create default data
+    if (_myBox.get("REFRIGERATORLIST") == null) {
+      db.createInitialDataRefrigerator();
+    } else {
+      //there already exists data
+      db.loadDataRefrigerator();
+    }
+    super.initState();
+  }
 
   String dateTemp = '2023-03-08';
 
@@ -36,28 +51,24 @@ class _ThirdPageState extends State<ThirdPage> {
   //text controller
   final _controller = TextEditingController();
 
-  //list of Refrigerator items
-  List refrigeratorList = [
-    ["sample1", 'yyyy-mm-dd', false],
-    ["sample2", 'yyyy-mm-dd', false],
-  ];
-
   //checkbox was tapped
   void checkBoxChanged_refrigerator(bool? value, int index) {
     setState(() {
-      refrigeratorList[index][2] = !refrigeratorList[index][2];
+      db.refrigeratorList[index][2] = !db.refrigeratorList[index][2];
     });
+    db.updateDataBaseRefrigerator();
   }
 
   //save new task
   void saveNewItem() {
     setState(() {
       dateTemp = _dataSaver.get("TEXT");
-      refrigeratorList.add([_controller.text, dateTemp, false]);
+      db.refrigeratorList.add([_controller.text, dateTemp, false]);
       _controller.clear();
     });
     ResetTextDataBase();
     Navigator.of(context, rootNavigator: true).pop();
+    db.updateDataBaseRefrigerator();
   }
 
   void close() {
@@ -87,8 +98,9 @@ class _ThirdPageState extends State<ThirdPage> {
   //delete item
   void deleteItem(int index) {
     setState(() {
-      refrigeratorList.removeAt(index);
+      db.refrigeratorList.removeAt(index);
     });
+    db.updateDataBaseRefrigerator();
   }
 
   @override
@@ -108,12 +120,12 @@ class _ThirdPageState extends State<ThirdPage> {
         ),
       ),
       body: ListView.builder(
-        itemCount: refrigeratorList.length,
+        itemCount: db.refrigeratorList.length,
         itemBuilder: (context, index) {
           return RefrigeratorTile(
-            refrigeratorName: refrigeratorList[index][0],
-            date_refrigerator: refrigeratorList[index][1],
-            refrigeratorCompleted: refrigeratorList[index][2],
+            refrigeratorName: db.refrigeratorList[index][0],
+            date_refrigerator: db.refrigeratorList[index][1],
+            refrigeratorCompleted: db.refrigeratorList[index][2],
             onChanged_Refrigerator: (value) =>
                 checkBoxChanged_refrigerator(value, index),
             deleteFunction: (context) => deleteItem(index),
