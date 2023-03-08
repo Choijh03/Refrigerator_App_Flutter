@@ -56,7 +56,11 @@ class _FifthPageState extends State<FifthPage> {
     'CA PIZZA KITCHEN',
     'OLIVE GARDEN',
     "BUFFET",
-    "SEAFOOD"
+    "SEAFOOD",
+    'TEXAS BBQ',
+    'PHO',
+    'THAI',
+    'OVEN CHICKEN',
   ];
   String food = '';
 
