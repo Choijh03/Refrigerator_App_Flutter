@@ -16,6 +16,7 @@ class _ThirdPageState extends State<ThirdPage> {
   //reference Hive DataSaver
   final _dataSaver = Hive.box('dateSaver2');
   final _myBox = Hive.box('refrigeratorBox');
+  final _itemBox = Hive.box("refrigeratorItemBox");
   RefrigeratorDataBase db = RefrigeratorDataBase();
 
   @override
@@ -64,6 +65,7 @@ class _ThirdPageState extends State<ThirdPage> {
     setState(() {
       dateTemp = _dataSaver.get("TEXT");
       db.refrigeratorList.add([_controller.text, dateTemp, false]);
+      db.refrigeratorItemList.add(_controller.text);
       _controller.clear();
     });
     ResetTextDataBase();
@@ -99,6 +101,7 @@ class _ThirdPageState extends State<ThirdPage> {
   void deleteItem(int index) {
     setState(() {
       db.refrigeratorList.removeAt(index);
+      db.refrigeratorItemList.removeAt(index);
     });
     db.updateDataBaseRefrigerator();
   }

@@ -12,6 +12,8 @@ void main() async {
   var groceryBox = await Hive.openBox('groceryBox');
   var freezerBox = await Hive.openBox('freezerBox');
   var refrigeratorBox = await Hive.openBox('refrigeratorBox');
+  var freezerTempBox = await Hive.openBox("freezerItemBox");
+  var refrigeratorTempBox = await Hive.openBox("refrigeratorItemBox");
 
   runApp(const MyApp());
 }

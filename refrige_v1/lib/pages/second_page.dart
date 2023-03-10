@@ -16,6 +16,7 @@ class _SecondPageState extends State<SecondPage> {
   //reference Hive DataSaver
   final _dataSaver = Hive.box('dateSaver1');
   final _myBox = Hive.box('freezerBox');
+  final _itemBox = Hive.box("freezerItemBox");
   FreezerDataBase db = FreezerDataBase();
 
   @override
@@ -64,6 +65,7 @@ class _SecondPageState extends State<SecondPage> {
     setState(() {
       dateTemp = _dataSaver.get("TEXT");
       db.freezerList.add([_controller.text, dateTemp, false]);
+      db.freezerItemList.add(_controller.text);
       _controller.clear();
     });
     ResetTextDataBase();
@@ -99,6 +101,7 @@ class _SecondPageState extends State<SecondPage> {
   void deleteItem(int index) {
     setState(() {
       db.freezerList.removeAt(index);
+      db.freezerItemList.removeAt(index);
     });
     db.updateDataBaseFreezer();
   }
