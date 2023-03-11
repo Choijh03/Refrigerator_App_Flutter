@@ -197,7 +197,10 @@ class _FifthPageState extends State<FifthPage> {
                 right: 25,
               ),
               child: Container(
-                color: Colors.grey[400],
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey[400],
+                ),
                 child: const Center(
                   child: Padding(
                     padding: EdgeInsets.all(16.0),
