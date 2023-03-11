@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:refrige_v1/databases/grocery_database.dart';
+import 'package:refrige_v1/dialogs/dialog_box_grocerry_help.dart';
 import 'package:refrige_v1/dialogs/dialog_box_grocery.dart';
 import '../tiles/grocery_tile.dart';
 
@@ -72,19 +73,38 @@ class _FirstPageState extends State<FirstPage> {
     db.updateDataBaseGrocery();
   }
 
+  //show help dialog
+  void helpDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const DialogBoxGrocerryHelp();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Center(child: Text('Grocery List')),
+        title: const Center(child: Text('Grocery List')),
+        actions: [
+          IconButton(
+            onPressed: helpDialog, //help dialog
+            icon: const Icon(
+              Icons.help,
+              color: Colors.white,
+            ),
+          )
+        ],
         backgroundColor: Colors.grey,
         elevation: 0, //removing shadow
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewGroceryItem,
         backgroundColor: Colors.grey[600],
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),

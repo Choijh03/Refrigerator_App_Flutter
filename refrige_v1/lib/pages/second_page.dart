@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:refrige_v1/databases/freezer_database.dart';
 import 'package:refrige_v1/dialogs/dialog_box_freezer.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import '../dialogs/dialog_box_freezer_help.dart';
 import '../tiles/freezer_tile.dart';
 import 'package:intl/intl.dart';
 
@@ -106,19 +107,38 @@ class _SecondPageState extends State<SecondPage> {
     db.updateDataBaseFreezer();
   }
 
+  //show help dialog
+  void helpDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const DialogBoxFreezerHelp();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Center(child: Text('Freezer List')),
+        actions: [
+          IconButton(
+            onPressed: helpDialog, //help dialog
+            icon: const Icon(
+              Icons.help,
+              color: Colors.white,
+            ),
+          )
+        ],
         backgroundColor: Colors.grey,
         elevation: 0, //removing shadow
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewFreezerItem,
         backgroundColor: Colors.grey[600],
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),

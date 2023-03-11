@@ -3,6 +3,7 @@ import 'package:refrige_v1/databases/refrigerator_database.dart';
 import 'package:refrige_v1/dialogs/dialog_box_refrigerator.dart';
 import 'package:intl/intl.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import '../dialogs/dialog_box_refrigerator_help.dart';
 import '../tiles/refrigerator_tile.dart';
 
 class ThirdPage extends StatefulWidget {
@@ -106,19 +107,38 @@ class _ThirdPageState extends State<ThirdPage> {
     db.updateDataBaseRefrigerator();
   }
 
+  //show help dialog
+  void helpDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const DialogBoxRefrigeratorHelp();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Center(child: Text('Refrigerator List')),
+        title: const Center(child: Text('Refrigerator List')),
+        actions: [
+          IconButton(
+            onPressed: helpDialog, //help dialog
+            icon: const Icon(
+              Icons.help,
+              color: Colors.white,
+            ),
+          )
+        ],
         backgroundColor: Colors.grey,
         elevation: 0, //removing shadow
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewRefrigeratorItem,
         backgroundColor: Colors.grey[600],
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),

@@ -27,7 +27,7 @@ class FreezerTile extends StatelessWidget {
       ),
       child: Slidable(
         endActionPane: ActionPane(
-          motion: StretchMotion(),
+          motion: const StretchMotion(),
           children: [
             SlidableAction(
               onPressed: deleteFunction,
@@ -38,7 +38,11 @@ class FreezerTile extends StatelessWidget {
           ],
         ),
         child: Container(
-          padding: EdgeInsets.all(24),
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.grey[400],
+            borderRadius: BorderRadius.circular(12),
+          ),
           child: Row(
             children: [
               //checkbox
@@ -63,16 +67,12 @@ class FreezerTile extends StatelessWidget {
               ),
               Text(
                 date_freezer,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ],
-          ),
-          decoration: BoxDecoration(
-            color: Colors.grey[400],
-            borderRadius: BorderRadius.circular(12),
           ),
         ),
       ),

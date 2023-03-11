@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:refrige_v1/databases/recipe_database.dart';
 
 import '../dialogs/dialog_box_recipe.dart';
+import '../dialogs/dialog_box_recipe_help.dart';
 import '../tiles/recipe_tile.dart';
 
 class FourthPage extends StatefulWidget {
@@ -36,13 +37,13 @@ class _FourthPageState extends State<FourthPage> {
   final _controller_item3 = TextEditingController();
 
   //checkBox1 was tapped
-  void checkBox1Changed(bool? value, int index) {}
+  void checkBox1Changed() {}
 
   //checkBox2 was tapped
-  void checkBox2Changed(bool? value, int index) {}
+  void checkBox2Changed() {}
 
   //checkBox2 was tapped
-  void checkBox3Changed(bool? value, int index) {}
+  void checkBox3Changed() {}
 
   //dismiss
   void close() {
@@ -211,16 +212,33 @@ class _FourthPageState extends State<FourthPage> {
     db.updateDataBaseRecipe();
   }
 
+  //show help dialog
+  void helpDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const DialogBoxRecipeHelp();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Center(child: Text('Recipe List')),
+        title: const Center(child: Text('Recipe List')),
         actions: [
           IconButton(
+            onPressed: helpDialog, //help dialog
+            icon: const Icon(
+              Icons.help,
+              color: Colors.white,
+            ),
+          ),
+          IconButton(
             onPressed: refreshCheckBox, //refresh the recipe list with this btn
-            icon: Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh),
           )
         ],
 
@@ -245,9 +263,9 @@ class _FourthPageState extends State<FourthPage> {
             item2Available: db.recipeList[index][4],
             item3: db.recipeList[index][5],
             item3Available: db.recipeList[index][6],
-            onChanged_item1: (value) => checkBox1Changed(value, index),
-            onChanged_item2: (value) => checkBox2Changed(value, index),
-            onChanged_item3: (value) => checkBox3Changed(value, index),
+            onChanged_item1: (value) => checkBox1Changed(),
+            onChanged_item2: (value) => checkBox2Changed(),
+            onChanged_item3: (value) => checkBox3Changed(),
             deleteFunction: (context) => deleteItem(index),
           );
         },

@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
+import '../dialogs/dialog_box_roullete_help.dart';
+
 class FifthPage extends StatefulWidget {
   const FifthPage({super.key});
 
@@ -82,12 +84,31 @@ class _FifthPageState extends State<FifthPage> {
     food5 = list[4];
   }
 
+  //show help dialog
+  void helpDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const DialogBoxRoulleteHelp();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: const Center(child: Text('Food Recommendation Roullete')),
+        actions: [
+          IconButton(
+            onPressed: helpDialog, //help dialog
+            icon: const Icon(
+              Icons.help,
+              color: Colors.white,
+            ),
+          )
+        ],
         backgroundColor: Colors.grey,
         elevation: 0, //removing shadow
       ),
