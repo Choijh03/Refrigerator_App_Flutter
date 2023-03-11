@@ -87,7 +87,7 @@ class _FifthPageState extends State<FifthPage> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Center(child: Text('Food Recommendation Roullete')),
+        title: const Center(child: Text('Food Recommendation Roullete')),
         backgroundColor: Colors.grey,
         elevation: 0, //removing shadow
       ),
@@ -97,7 +97,7 @@ class _FifthPageState extends State<FifthPage> {
         children: [
           Text(
             food,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -107,7 +107,7 @@ class _FifthPageState extends State<FifthPage> {
                 animateFirst: false,
                 selected: selected,
                 physics: CircularPanPhysics(
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   curve: Curves.decelerate,
                 ),
                 onFling: () {
@@ -115,7 +115,7 @@ class _FifthPageState extends State<FifthPage> {
                     selected = Random().nextInt(4);
                   });
                 },
-                styleStrategy: UniformStyleStrategy(
+                styleStrategy: const UniformStyleStrategy(
                   borderColor: Colors.white,
                   color: Colors.grey,
                   borderWidth: 5,
@@ -124,27 +124,27 @@ class _FifthPageState extends State<FifthPage> {
                   FortuneItem(
                       child: Text(
                     food1,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   )),
                   FortuneItem(
                       child: Text(
                     food2,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   )),
                   FortuneItem(
                       child: Text(
                     food3,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   )),
                   FortuneItem(
                       child: Text(
                     food4,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   )),
                   FortuneItem(
                       child: Text(
                     food5,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   )),
                 ],
                 onAnimationEnd: () {
@@ -168,14 +168,17 @@ class _FifthPageState extends State<FifthPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: MaterialButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
               color: Colors.grey[400],
               onPressed: () {
                 setState(() {
                   randomFood(foods);
                 });
               },
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
+              child: const Padding(
+                padding: EdgeInsets.all(16.0),
                 child: Text('Click to randomize the list!'),
               ),
             ),
@@ -195,9 +198,9 @@ class _FifthPageState extends State<FifthPage> {
               ),
               child: Container(
                 color: Colors.grey[400],
-                child: Center(
+                child: const Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: Text(
                       'Click to Spin!',
                       style: TextStyle(fontWeight: FontWeight.bold),
