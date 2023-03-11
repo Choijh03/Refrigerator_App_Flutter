@@ -23,7 +23,7 @@ class DialogBoxRoulleteHelp extends StatelessWidget {
               height: 25,
             ),
             Text(
-              '1. Click randomize button to randomize the item list.',
+              '1. Click circular edit button on the right bottom to add new items.',
               textAlign: TextAlign.start,
             ),
             SizedBox(

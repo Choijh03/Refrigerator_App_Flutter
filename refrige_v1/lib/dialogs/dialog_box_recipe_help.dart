@@ -23,7 +23,7 @@ class DialogBoxRecipeHelp extends StatelessWidget {
               height: 25,
             ),
             Text(
-              '1. Click circular button on the right bottom to add new item.',
+              '1. Click circular plus button on the right bottom to add new item.',
               textAlign: TextAlign.start,
             ),
             SizedBox(
