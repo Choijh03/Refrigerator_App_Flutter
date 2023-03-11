@@ -35,6 +35,13 @@ class _FourthPageState extends State<FourthPage> {
   final _controller_item1 = TextEditingController();
   final _controller_item2 = TextEditingController();
   final _controller_item3 = TextEditingController();
+  final _controller_item4 = TextEditingController();
+  final _controller_item5 = TextEditingController();
+  final _controller_item6 = TextEditingController();
+  final _controller_item7 = TextEditingController();
+  final _controller_item8 = TextEditingController();
+  final _controller_item9 = TextEditingController();
+  final _controller_item10 = TextEditingController();
 
   //checkBox1 was tapped
   void checkBox1Changed() {}
@@ -42,8 +49,29 @@ class _FourthPageState extends State<FourthPage> {
   //checkBox2 was tapped
   void checkBox2Changed() {}
 
-  //checkBox2 was tapped
+  //checkBox3 was tapped
   void checkBox3Changed() {}
+
+  //checkBox4 was tapped
+  void checkBox4Changed() {}
+
+  //checkBox5 was tapped
+  void checkBox5Changed() {}
+
+  //checkBox6 was tapped
+  void checkBox6Changed() {}
+
+  //checkBox7 was tapped
+  void checkBox7Changed() {}
+
+  //checkBox8 was tapped
+  void checkBox8Changed() {}
+
+  //checkBox9 was tapped
+  void checkBox9Changed() {}
+
+  //checkBox10 was tapped
+  void checkBox10Changed() {}
 
   //dismiss
   void close() {
@@ -51,6 +79,13 @@ class _FourthPageState extends State<FourthPage> {
     _controller_item1.clear();
     _controller_item2.clear();
     _controller_item3.clear();
+    _controller_item4.clear();
+    _controller_item5.clear();
+    _controller_item6.clear();
+    _controller_item7.clear();
+    _controller_item8.clear();
+    _controller_item9.clear();
+    _controller_item10.clear();
     Navigator.of(context, rootNavigator: true).pop();
   }
 
@@ -78,9 +113,23 @@ class _FourthPageState extends State<FourthPage> {
       bool itemBool1 = false;
       bool itemBool2 = false;
       bool itemBool3 = false;
+      bool itemBool4 = false;
+      bool itemBool5 = false;
+      bool itemBool6 = false;
+      bool itemBool7 = false;
+      bool itemBool8 = false;
+      bool itemBool9 = false;
+      bool itemBool10 = false;
       String item1String = db.recipeList[index][1];
       String item2String = db.recipeList[index][3];
       String item3String = db.recipeList[index][5];
+      String item4String = db.recipeList[index][7];
+      String item5String = db.recipeList[index][9];
+      String item6String = db.recipeList[index][11];
+      String item7String = db.recipeList[index][13];
+      String item8String = db.recipeList[index][15];
+      String item9String = db.recipeList[index][17];
+      String item10String = db.recipeList[index][19];
 
       //compare with item1,itme2,item3 text to see if it's available
       for (var item in freezerItemList) {
@@ -93,6 +142,27 @@ class _FourthPageState extends State<FourthPage> {
         }
         if (temp.toLowerCase() == item3String.toLowerCase()) {
           itemBool3 = true;
+        }
+        if (temp.toLowerCase() == item4String.toLowerCase()) {
+          itemBool4 = true;
+        }
+        if (temp.toLowerCase() == item5String.toLowerCase()) {
+          itemBool5 = true;
+        }
+        if (temp.toLowerCase() == item6String.toLowerCase()) {
+          itemBool6 = true;
+        }
+        if (temp.toLowerCase() == item7String.toLowerCase()) {
+          itemBool7 = true;
+        }
+        if (temp.toLowerCase() == item8String.toLowerCase()) {
+          itemBool8 = true;
+        }
+        if (temp.toLowerCase() == item9String.toLowerCase()) {
+          itemBool9 = true;
+        }
+        if (temp.toLowerCase() == item10String.toLowerCase()) {
+          itemBool10 = true;
         }
       }
 
@@ -107,12 +177,40 @@ class _FourthPageState extends State<FourthPage> {
         if (temp.toLowerCase() == item3String.toLowerCase()) {
           itemBool3 = true;
         }
+        if (temp.toLowerCase() == item4String.toLowerCase()) {
+          itemBool4 = true;
+        }
+        if (temp.toLowerCase() == item5String.toLowerCase()) {
+          itemBool5 = true;
+        }
+        if (temp.toLowerCase() == item6String.toLowerCase()) {
+          itemBool6 = true;
+        }
+        if (temp.toLowerCase() == item7String.toLowerCase()) {
+          itemBool7 = true;
+        }
+        if (temp.toLowerCase() == item8String.toLowerCase()) {
+          itemBool8 = true;
+        }
+        if (temp.toLowerCase() == item9String.toLowerCase()) {
+          itemBool9 = true;
+        }
+        if (temp.toLowerCase() == item10String.toLowerCase()) {
+          itemBool10 = true;
+        }
       }
 
       setState(() {
         db.recipeList[index][2] = itemBool1;
         db.recipeList[index][4] = itemBool2;
         db.recipeList[index][6] = itemBool3;
+        db.recipeList[index][8] = itemBool4;
+        db.recipeList[index][10] = itemBool5;
+        db.recipeList[index][12] = itemBool6;
+        db.recipeList[index][14] = itemBool7;
+        db.recipeList[index][16] = itemBool8;
+        db.recipeList[index][18] = itemBool9;
+        db.recipeList[index][20] = itemBool10;
       });
       db.updateDataBaseRecipe();
     }
@@ -123,6 +221,13 @@ class _FourthPageState extends State<FourthPage> {
     bool item1 = false;
     bool item2 = false;
     bool item3 = false;
+    bool item4 = false;
+    bool item5 = false;
+    bool item6 = false;
+    bool item7 = false;
+    bool item8 = false;
+    bool item9 = false;
+    bool item10 = false;
     List freezerItemList = [];
     List refrigeratorItemList = [];
     //check if freezer and refrigerator item hive box is null
@@ -152,6 +257,27 @@ class _FourthPageState extends State<FourthPage> {
       if (temp.toLowerCase() == _controller_item3.text.toLowerCase()) {
         item3 = true;
       }
+      if (temp.toLowerCase() == _controller_item4.text.toLowerCase()) {
+        item4 = true;
+      }
+      if (temp.toLowerCase() == _controller_item5.text.toLowerCase()) {
+        item5 = true;
+      }
+      if (temp.toLowerCase() == _controller_item6.text.toLowerCase()) {
+        item6 = true;
+      }
+      if (temp.toLowerCase() == _controller_item7.text.toLowerCase()) {
+        item7 = true;
+      }
+      if (temp.toLowerCase() == _controller_item8.text.toLowerCase()) {
+        item8 = true;
+      }
+      if (temp.toLowerCase() == _controller_item9.text.toLowerCase()) {
+        item9 = true;
+      }
+      if (temp.toLowerCase() == _controller_item10.text.toLowerCase()) {
+        item10 = true;
+      }
     }
 
     for (var item in refrigeratorItemList) {
@@ -165,6 +291,27 @@ class _FourthPageState extends State<FourthPage> {
       if (temp.toLowerCase() == _controller_item3.text.toLowerCase()) {
         item3 = true;
       }
+      if (temp.toLowerCase() == _controller_item4.text.toLowerCase()) {
+        item4 = true;
+      }
+      if (temp.toLowerCase() == _controller_item5.text.toLowerCase()) {
+        item5 = true;
+      }
+      if (temp.toLowerCase() == _controller_item6.text.toLowerCase()) {
+        item6 = true;
+      }
+      if (temp.toLowerCase() == _controller_item7.text.toLowerCase()) {
+        item7 = true;
+      }
+      if (temp.toLowerCase() == _controller_item8.text.toLowerCase()) {
+        item8 = true;
+      }
+      if (temp.toLowerCase() == _controller_item9.text.toLowerCase()) {
+        item9 = true;
+      }
+      if (temp.toLowerCase() == _controller_item10.text.toLowerCase()) {
+        item10 = true;
+      }
     }
 
     setState(() {
@@ -176,12 +323,33 @@ class _FourthPageState extends State<FourthPage> {
         item2,
         _controller_item3.text,
         item3,
+        _controller_item4.text,
+        item4,
+        _controller_item5.text,
+        item5,
+        _controller_item6.text,
+        item6,
+        _controller_item7.text,
+        item7,
+        _controller_item8.text,
+        item8,
+        _controller_item9.text,
+        item9,
+        _controller_item10.text,
+        item10,
       ]);
 
       _controller_name.clear();
       _controller_item1.clear();
       _controller_item2.clear();
       _controller_item3.clear();
+      _controller_item4.clear();
+      _controller_item5.clear();
+      _controller_item6.clear();
+      _controller_item7.clear();
+      _controller_item8.clear();
+      _controller_item9.clear();
+      _controller_item10.clear();
     });
     Navigator.of(context, rootNavigator: true).pop();
     db.updateDataBaseRecipe();
@@ -197,6 +365,13 @@ class _FourthPageState extends State<FourthPage> {
           controller_item1: _controller_item1,
           controller_item2: _controller_item2,
           controller_item3: _controller_item3,
+          controller_item4: _controller_item4,
+          controller_item5: _controller_item5,
+          controller_item6: _controller_item6,
+          controller_item7: _controller_item7,
+          controller_item8: _controller_item8,
+          controller_item9: _controller_item9,
+          controller_item10: _controller_item10,
           onSave: saveNewRecipe,
           onCancel: close,
         );
@@ -263,9 +438,30 @@ class _FourthPageState extends State<FourthPage> {
             item2Available: db.recipeList[index][4],
             item3: db.recipeList[index][5],
             item3Available: db.recipeList[index][6],
+            item4: db.recipeList[index][7],
+            item4Available: db.recipeList[index][8],
+            item5: db.recipeList[index][9],
+            item5Available: db.recipeList[index][10],
+            item6: db.recipeList[index][11],
+            item6Available: db.recipeList[index][12],
+            item7: db.recipeList[index][13],
+            item7Available: db.recipeList[index][14],
+            item8: db.recipeList[index][15],
+            item8Available: db.recipeList[index][16],
+            item9: db.recipeList[index][17],
+            item9Available: db.recipeList[index][18],
+            item10: db.recipeList[index][19],
+            item10Available: db.recipeList[index][20],
             onChanged_item1: (value) => checkBox1Changed(),
             onChanged_item2: (value) => checkBox2Changed(),
             onChanged_item3: (value) => checkBox3Changed(),
+            onChanged_item4: (value) => checkBox4Changed(),
+            onChanged_item5: (value) => checkBox5Changed(),
+            onChanged_item6: (value) => checkBox6Changed(),
+            onChanged_item7: (value) => checkBox7Changed(),
+            onChanged_item8: (value) => checkBox8Changed(),
+            onChanged_item9: (value) => checkBox9Changed(),
+            onChanged_item10: (value) => checkBox10Changed(),
             deleteFunction: (context) => deleteItem(index),
           );
         },

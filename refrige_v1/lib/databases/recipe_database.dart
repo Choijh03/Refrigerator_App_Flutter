@@ -10,7 +10,29 @@ class RecipeDataBase {
   //run this method if this is the 1st time ever opening this app
   void createInitialDataRecipe() {
     recipeList = [
-      ['Sample Recipe', 'item1', false, 'item2', false, 'item3', false],
+      [
+        'Sample Recipe',
+        'item1',
+        true,
+        'item2',
+        true,
+        'item3',
+        true,
+        'item4',
+        false,
+        'item5',
+        false,
+        'item6',
+        false,
+        'item7',
+        false,
+        'item8',
+        false,
+        'item9',
+        false,
+        'item10',
+        false,
+      ],
     ];
   }
 
