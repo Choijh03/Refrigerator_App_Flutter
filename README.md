@@ -4,8 +4,6 @@ This is first version of Refrigerator Digger Android Application built on Flutte
 
 ------------------------------------------------------------------------------------------------------------
 
-Currently, code is saved on private GitHub repo as this is still on-going project.
-
 This app is to help people organize the list of grocery, freezer, refrigerator, and recipe.
 
 This app can be found on google store: RefrigeDigger.
