@@ -3,6 +3,7 @@
 This is first version of Refrigerator Digger Android Application built on Flutter 3.7 during Spring 2023 (February ~ March) -Dart
 
 ------------------------------------------------------------------------------------------------------------
+Have you forgotten what's in the freezer or refrigerator and food got wasted?
 
 This app is to help people organize the list of grocery, freezer, refrigerator, and recipe.
 
